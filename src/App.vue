@@ -1,13 +1,23 @@
 <template>
   <div id="app">
-    <h1>头条</h1>
-    <router-view/>
+  <router-view></router-view>
+  <div></div>
   </div>
 </template>
 
 <script>
+// import Vue from 'vue'
+// import { Button, Cell, CellGroup } from 'vant'
+// import Button from 'vant/lib/button'
+// import 'vant/lib/button/style'
+// import 'vant/lib/cell/style'
+// import 'vant/lib/index.css'
+// Vue.use(Button)
+// Vue.use(Cell)
+// Vue.use(CellGroup)
 export default {
   name: 'App'
+
 }
 </script>
 

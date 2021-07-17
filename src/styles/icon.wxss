@@ -70,12 +70,3 @@
 .icon-dianzan2:before {
   content: "\e614";
 }
-.app-nav-bar {
-  background-color: #3296fa;
-}
-.app-nav-bar .van-nav-bar__title {
-  color: snow;
-}
-.app-nav-bar .van-nav-bar__arrow {
-  color: snow;
-}
