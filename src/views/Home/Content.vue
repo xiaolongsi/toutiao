@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="content" ref="content-list">
     <van-pull-refresh v-model="isPullDownLoading" @refresh="onRefresh">
       <van-list
         v-model="loading"
@@ -17,6 +17,7 @@
 <script>
 import { getContent } from '../../api/user.js'
 import ContentItem from '../../components/content-item/content-item.vue'
+import { debounce } from 'lodash'
 export default {
   data () {
     return {
@@ -24,12 +25,23 @@ export default {
       loading: false,
       finished: false,
       timestamp: null, // 获取下页的时间戳
-      isPullDownLoading: false // 下拉刷新的loading状态
+      isPullDownLoading: false, // 下拉刷新的loading状态
+      scrollTop: 0 // 滚动高度
     }
   },
 
   mounted () {
-
+    const contentList = this.$refs['content-list']
+    contentList.onscroll = debounce(() => {
+      // console.log(contentList.scrollTop)
+      this.scrollTop = contentList.scrollTop
+    }, 50)
+    // console.log(this.$route.path)
+  },
+  activated () {
+    this.$refs['content-list'].scrollTop = this.scrollTop
+  },
+  watch: {
   },
 
   methods: {

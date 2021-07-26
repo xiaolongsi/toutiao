@@ -14,6 +14,7 @@
         class="updata-btn"
          size="small"
          round
+         to="/userProfile"
         >编辑资料</van-button>
       </van-cell>
     <van-grid :border="false" class="data-info">
@@ -23,7 +24,12 @@
       <van-grid-item text="获赞" class="info-item"><span slot="icon">{{useInfo.like_count}}</span></van-grid-item>
     </van-grid>
   </van-cell-group>
-  <div class="not-login" v-else @click="$router.push('/login')">
+  <div class="not-login" v-else @click="$router.push({
+    name: 'login',
+    query: {
+      redirect: '/my'
+    }
+  })">
     <div>
       <img class="mobile" src="./touxiang.png" alt="">
     </div>
@@ -36,7 +42,7 @@
       <van-grid-item class="iconfont nav-grid-item" icon-prefix="icon" icon="lishi" text="历史" />
     </van-grid>
     <van-cell title="消息通知" is-link v-if="user"  to=""/>
-    <van-cell title="小智同学" class="mb-8" is-link  to=""/>
+    <van-cell title="小智同学" class="mb-8" is-link  to="/userChat"/>
     <van-button type="danger" size="large" v-if="user" @click="layout">退出登录</van-button>
   </div>
 </template>
@@ -65,7 +71,7 @@ export default {
       })
         .then(() => {
           this.$store.commit('setUser', '')
-          this.$router.replace('/login')
+          // this.$router.replace('/login')
           // on confirm
         })
     },

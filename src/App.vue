@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-  <router-view></router-view>
+    <keep-alive :include="cachePages">
+      <router-view></router-view>
+    </keep-alive>
   <div></div>
   </div>
 </template>
@@ -15,9 +17,12 @@
 // Vue.use(Button)
 // Vue.use(Cell)
 // Vue.use(CellGroup)
+import { mapState } from 'vuex'
 export default {
-  name: 'App'
-
+  name: 'App',
+  computed: {
+    ...mapState(['cachePages'])
+  }
 }
 </script>
 

@@ -120,3 +120,119 @@ export const getArticalById = articleId => {
     url: `/app/v1_0/articles/${articleId}`
   })
 }
+// 关注用户
+export const addFollow = userId => {
+  return request({
+    method: 'POST',
+    url: '/app/v1_0/user/followings',
+    data: {
+      target: userId
+    }
+  })
+}
+
+// 取消关注用户
+export const deleteFollow = userId => {
+  return request({
+    method: 'DELETE',
+    url: `/app/v1_0/user/followings/${userId}`
+  })
+}
+
+// 收藏文章
+export const addCollect = articleId => {
+  return request({
+    method: 'POST',
+    url: '/app/v1_0/article/collections',
+    data: {
+      target: articleId
+    }
+  })
+}
+
+// 取消收藏文章
+export const deleteCollect = articleId => {
+  return request({
+    method: 'DELETE',
+    url: `/app/v1_0/article/collections/${articleId}`
+  })
+}
+
+// 点赞文章
+export const addLike = articleId => {
+  return request({
+    method: 'POST',
+    url: '/app/v1_0/article/likings',
+    data: {
+      target: articleId
+    }
+  })
+}
+// 取消点赞文章
+export const deleteLike = articleId => {
+  return request({
+    method: 'DELETE',
+    url: `/app/v1_0/article/likings/${articleId}`
+  })
+}
+
+// 获取评论
+export const getComment = params => {
+  return request({
+    method: 'GET',
+    url: '/app/v1_0/comments',
+    params
+  })
+}
+
+// 发布评论
+export const addComment = params => {
+  return request({
+    method: 'GET',
+    url: '/app/v1_0/comments',
+    params
+  })
+}
+
+// 对评论或回复点赞
+export const addCommentLike = target => {
+  return request({
+    method: 'POST',
+    url: '/app/v1_0/comment/likings',
+    params: {
+      target
+    }
+  })
+}
+
+// 取消对评论或回复点赞
+export const deleteCommentLike = commentId => {
+  return request({
+    method: 'DELETE',
+    url: `/app/v1_0/comment/likings/${commentId}`
+  })
+}
+
+// 获取用户个人资料
+export const getUserProfile = () => {
+  return request({
+    method: 'get',
+    url: '/app/v1_0/user/profile'
+  })
+}
+// 获取用户个人资料
+export const updateUserProfile = data => {
+  return request({
+    method: 'PATCH',
+    url: '/app/v1_0/user/profile',
+    data
+  })
+}
+// 获取用户头像
+export const getPhoto = data => {
+  return request({
+    method: 'PATCH',
+    url: '/app/v1_0/user/photo',
+    data
+  })
+}
