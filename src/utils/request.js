@@ -47,7 +47,7 @@ request.interceptors.response.use(function (response) {
     // 没有user
     const { user } = store.state
     if (!user || !user.token) {
-      console.log(1)
+      // console.log(1)
       return redirectLogin()
     }
     // 使用refresh_token请求获取新的token

@@ -58,7 +58,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['user', 'userInfo'])
+    ...mapState(['user'])
   },
   created () {
     this.getUserInfo()

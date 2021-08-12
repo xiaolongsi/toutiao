@@ -4,7 +4,7 @@
       class="app-nav-bar"
       title="登录/注册"
       left-arrow
-      @click-left="$router.back()"
+      @click-left="$router.replace($route.query.redirect || '/home')"
     />
     <!-- <div class="content">
       <form @submit.prevent="go()">
@@ -104,7 +104,7 @@ export default {
         Toast.success('登陆成功')
         // 清除layout的缓存 让他重新渲染
         this.$store.commit('removeCachePage', 'Layout')
-        this.$router.replace(this.$route.query.redirect || '/')
+        this.$router.replace(this.$route.query.redirect || '/home')
       } catch (error) {
         // console.log(error)
         Toast.fail('登录失败')
