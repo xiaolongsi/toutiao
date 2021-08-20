@@ -21,7 +21,7 @@ export default {
     }
   },
   mounted () {
-    this.$store.commit('addCachePage', 'layout')
+    this.$store.commit('addCachePage', 'Layout')
   }
 }
 </script>

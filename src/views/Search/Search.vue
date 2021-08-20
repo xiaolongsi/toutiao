@@ -16,11 +16,11 @@
     <!-- 历史记录 -->
     <searchHistory @update-histories="searchHistories=$event" v-if="searchText.trim().length===0" @search="onSearch" :searchHistories="searchHistories"></searchHistory>
 
-    <!-- 联想建议 -->
-    <searchSuggestion :searchText="searchText" @search="onSearch"></searchSuggestion>
-
     <!-- 结果 -->
-    <searchResult :searchText="searchText" v-if="isResultShow"></searchResult>
+    <searchResult :searchText="searchText" v-else-if="isResultShow"></searchResult>
+
+    <!-- 联想建议 -->
+    <searchSuggestion v-else  :searchText="searchText" @search="onSearch"></searchSuggestion>
   </div>
 </template>
 
@@ -63,14 +63,17 @@ export default {
         // 移除该项
         this.searchHistories.splice(index, 1)
       }
-      // 记录搜索历史记录
-      this.searchHistories.unshift(searchText)
-      // 如果用户一登录 则把搜索历史存储到线上   登录状态下调用 接口 后端会自动帮我们存
-      // 如果没有登陆 则把搜索记录存储到本地
-      // setItem('search-histories', this.searchHistories)
-
-      // 展示搜索结果
-      this.isResultShow = true
+      if (searchText.trim().length !== 0) {
+        // 记录搜索历史记录
+        this.searchHistories.unshift(searchText)
+        // 如果用户一登录 则把搜索历史存储到线上   登录状态下调用 接口 后端会自动帮我们存
+        // 如果没有登陆 则把搜索记录存储到本地
+        // setItem('search-histories', this.searchHistories)
+        // 展示搜索结果
+        this.isResultShow = true
+      } else {
+        this.searchText = ''
+      }
     }
   },
   components: {

@@ -1,5 +1,5 @@
 <template>
-  <div class="content" v-if="searchText.trim().length>0">
+  <div class="content">
     <van-cell icon="search" v-for="(option, index) in options" :key="index" @click="$emit('search', option)">
       <div slot="title" v-html="hightLight(option)"></div>
     </van-cell>
@@ -55,7 +55,8 @@ export default {
           // console.log(data)
           this.options = data.data.options
         }
-      }, 300)
+      }, 300),
+      immediate: true
     }
   }
 }
